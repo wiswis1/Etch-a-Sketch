@@ -7,17 +7,38 @@
     <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
-    <menu id = "menu">
-        <button class = "blackBtn" >BLACK</button>
-        <button class = "colorPickBtn">Pick your own color</button>
-        <button class = "RgbBtn">RGB</button>
-        <button class = "eraseBtn">Erase</button>
+    <header>
+        <h1>ETCH-A-SKETCH</h1>
+    </header>
+    <main>
+        <menu id = "menu">
+            <button class = "blackBtn" >BLACK</button>
+            <button class = "colorPickBtn">Pick your own color</button>
+            <button class = "RgbBtn">RGB</button>
+            <button class = "eraseBtn">Erase</button> 
+            
+            
+            
+            
+        </menu>
+        <div id = "grid-container"></div>
+    </main>
+
+    <footer>
+        <p class=footer>Copyright ©
+            <script>
+                document.write(new Date().getFullYear()) 
+                </script>
+                wiswis1
+                <a href="https://github.com/wiswis1" target="_blank">
+                    <i class="fa-brands fa-github" color: white></i>
+                </a>
+        </p>
+    </footer>
+
+
         
-    </menu>
 
-
-
-    <div id = "grid-container"></div>
     <script src = "game.js"></script>
     
 </body>

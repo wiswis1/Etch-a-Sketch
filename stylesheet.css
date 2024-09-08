@@ -58,15 +58,10 @@ button{
     flex-direction: row;
     align-self: center;
     width: 400px;
-    height: 500px;
+    height: 400px;
     background-color: rgb(218, 214, 214);
     box-shadow: 0 0 10px;
 }
-
-
-/* .grid-cell:hover{
-    background-color: black;
-} */
 
 
 

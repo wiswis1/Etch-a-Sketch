@@ -1,10 +1,11 @@
 const GRID_SIZE = 16;
-
-var currentMode = "black";
+const COLOR = 'black';
+var currentMode = "color";
+var currentColor = "black";
 
 var currentSize = GRID_SIZE;
 
-const blackBtn = document.getElementById("blackBtn");
+const colorBtn = document.getElementById("colorBtn");
 const colorPickBtn = document.getElementById("colorPickBtn");
 const rgbBtn = document.getElementById("rgbBtn");
 const eraserBtn = document.getElementById("eraserBtn");
@@ -13,25 +14,29 @@ const grid = document.getElementById("grid-container");
 const slider = document.getElementById('slider');
 const sliderValue = document.getElementById('sliderValue');
 
-blackBtn.onclick = () => setCurrentMode("black");
-colorPickBtn.onclick = (e) => setCurrentMode(e.target.value);
-rgbBtn.onclick = () => setCurrentMode("rgb");
-eraserBtn.onclick = () => setCurrentMode("eraser");
+
+colorPickBtn.oninput = (e) => setCurrentColor(e.target.value);
+colorBtn.onclick = () => setCurrentMode('color');
+rgbBtn.onclick = () => setCurrentMode('rgb');
+eraserBtn.onclick = () => setCurrentMode('eraser');
 clearBtn.onclick = () => resetGrid();
 slider.oninput = (e) => changeSize(e.target.value);
+
+
+
 
 function createGrid(size) {
   for (var i = 0; i < size; i++) {
     var column = document.createElement("div");
     column.classList.add("column");
-    column.style.width = 400 / size + "px";
-    column.style.height = "400px";
+    column.style.width = 700 / size + "px";
+    column.style.height = "700px";
     grid.appendChild(column);
     for (var j = 0; j < size; j++) {
       var gridCell = document.createElement("div");
       gridCell.classList.add("grid-cell");
-      gridCell.style.width = 400 / size + "px";
-      gridCell.style.height = 400 / size + "px";
+      gridCell.style.width = 700 / size + "px";
+      gridCell.style.height = 700 / size + "px";
 
       gridCell.addEventListener("mouseover", changeColor);
 
@@ -54,30 +59,39 @@ function resetGrid() {
   createGrid(currentSize);
 }
 
+
+
+function setCurrentColor(newColor){
+  currentColor = newColor;
+}
+
 function setCurrentMode(newMode) {
+  if (currentMode === "rgb") {
+    rgbBtn.classList.remove("active");
+  } else if (currentMode === "color") {
+    colorBtn.classList.remove("active");
+  } else if (currentMode === "eraser") {
+    eraserBtn.classList.remove("active");
+  }
+
   if (newMode === "rgb") {
     rgbBtn.classList.add("active");
-  } else if (newMode == "black") {
-    blackBtn.classList.add("active");
+  } else if (newMode == "color") {
+    colorBtn.classList.add("active");
+    
   } else if (newMode === "eraser") {
     eraserBtn.classList.add("active");
   }
 
-  if (currentMode === "rgb") {
-    rgbBtn.classList.remove("active");
-  } else if (currentMode === "black") {
-    blackBtn.classList.remove("active");
-  } else if (currentMode === "eraser") {
-    eraserBtn.classList.remove("active");
-  }
+
   currentMode = newMode;
 }
 
 
 
 function changeColor(e) {
-  if (currentMode === "black") {
-    e.target.style.backgroundColor = "black";
+  if (currentMode === "color") {
+    e.target.style.backgroundColor = currentColor;
   } else if (currentMode === "rgb") {
     const R = Math.floor(Math.random() * 256);
     const G = Math.floor(Math.random() * 256);
@@ -85,8 +99,6 @@ function changeColor(e) {
     e.target.style.backgroundColor = `rgb(${R},${G},${B})`;
   } else if (currentMode === "eraser") {
     e.target.style.backgroundColor = null;
-  } else if (isCustom) {
-    e.target.style.backgroundColor = currentColor;
   }
 }
 

@@ -37,7 +37,7 @@ footer{
 }
 
 button{
-    width: 15vmin;
+    width: 80%;
     height: 5vmin;
     font-size: 1em;
     color: rgb(230, 223, 223);
@@ -45,6 +45,31 @@ button{
     border-style: none;
     border-radius: 30px;
 }
+
+
+
+#colorPickBtn{
+    border-radius:20px;
+    height:70px;
+    width: 60%;
+    border: none;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+#colorPickBtn::-webkit-color-swatch-wrapper{
+    padding:0px;
+    background-color: rgba(0, 0, 0, 0);
+}
+ #colorPickBtn::-webkit-color-swatch{
+    
+    border:none;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+ }
+
 
 .active {
     background-color: rgb(127, 127, 177);
@@ -68,8 +93,8 @@ button{
     display: flex;
     flex-direction: row;
     align-self: center;
-    width: 400px;
-    height: 400px;
+    width: 700px;
+    height: 700px;
     background-color: rgb(218, 214, 214);
     box-shadow: 0 0 10px;
 }

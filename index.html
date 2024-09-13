@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,44 +8,46 @@
     <link rel="stylesheet" href="stylesheet.css">
     <script src="https://kit.fontawesome.com/1c7d73271d.js" crossorigin="anonymous">S</script>
 </head>
+
 <body>
     <header>
-        <h1>ETCH-A-SKETCH</h1>
+        <h1 class = "title">ETCH-A-SKETCH</h1>
     </header>
     <main>
-        <menu id = "menu">
-            <button id = "blackBtn" class ="active">BLACK</button>
-            <input id = "colorPickBtn" type="color">Pick your own color</button>
-            <button id = "rgbBtn">RGB</button>
-            <button id = "eraserBtn">Erase</button> 
-            <button id = "clearBtn">Clear</button>
-            <p id = "sliderValue">16x16</p>
-            <input id = "slider" type="range" min ="1" max ="64" value ="16" 
-            step="1">
+        <menu id="menu">
             
-            
-            
-            
+            <input id="colorPickBtn" type="color">
+            <button id="colorBtn" class="active">COLOR</button>
+            <button id="rgbBtn">RGB</button>
+            <button id="eraserBtn">Erase</button>
+            <button id="clearBtn">Clear</button>
+            <p id="sliderValue">16x16</p>
+            <input id="slider" type="range" min="1" max="64" value="16" step="1">
+
+
+
+
         </menu>
-        <div id = "grid-container"></div>
+        <div id="grid-container"></div>
     </main>
 
     <footer>
         <p class=footer>Copyright ©
             <script>
                 document.write(new Date().getFullYear()) 
-                </script>
-                wiswis1
-                <a href="https://github.com/wiswis1" target="_blank">
-                    <i class="fa-brands fa-github" color: white></i>
-                </a>
+            </script>
+            wiswis1
+            <a href="https://github.com/wiswis1" target="_blank">
+                <i class="fa-brands fa-github" color: white></i>
+            </a>
         </p>
     </footer>
 
 
-        
 
-    <script src = "game.js"></script>
-    
+
+    <script src="game.js"></script>
+
 </body>
+
 </html>

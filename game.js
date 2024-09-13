@@ -1,30 +1,26 @@
 const GRID_SIZE = 16;
 
-var currentMode = 'black';
+var currentMode = "black";
 
-var currentSize =  GRID_SIZE;
+var currentSize = GRID_SIZE;
 
+const blackBtn = document.getElementById("blackBtn");
+const colorPickBtn = document.getElementById("colorPickBtn");
+const rgbBtn = document.getElementById("rgbBtn");
+const eraserBtn = document.getElementById("eraserBtn");
+const clearBtn = document.getElementById("clearBtn");
+const grid = document.getElementById("grid-container");
+const slider = document.getElementById('slider');
+const sliderValue = document.getElementById('sliderValue');
 
-
-const blackBtn = document.getElementById('blackBtn');
-const colorPickBtn = document.getElementById('colorPickBtn');
-const rgbBtn = document.getElementById('rgbBtn');
-const eraseBtn = document.getElementById('eraseBtn');
-const clearBtn  = document.getElementById('clearBtn');
-const grid = document.getElementById('grid-container');
-// const sizeValue = document.getElementById('sizeValue')
-// const sizeSlider = document.getElementById('sizeSlider')
-
-
-
-blackBtn.onclick = () => setCurrentMode('black');
+blackBtn.onclick = () => setCurrentMode("black");
 colorPickBtn.onclick = (e) => setCurrentMode(e.target.value);
-rgbBtn.onclick = () => setCurrentMode('rgb');
-eraseBtn.onclick = () => setCurrentMode('eraser');
+rgbBtn.onclick = () => setCurrentMode("rgb");
+eraserBtn.onclick = () => setCurrentMode("eraser");
 clearBtn.onclick = () => resetGrid();
+slider.oninput = (e) => changeSize(e.target.value);
 
-
-function createGrid(size) { 
+function createGrid(size) {
   for (var i = 0; i < size; i++) {
     var column = document.createElement("div");
     column.classList.add("column");
@@ -44,48 +40,57 @@ function createGrid(size) {
   }
 }
 
-function changeSize(newSize){
-    currentSize = newSize;
-    resetGrid();
+
+
+function changeSize(newSize) {
+  sliderValue.innerHTML = newSize+"x"+newSize;
+  currentSize = newSize;
+  resetGrid();
 }
-
-
-
-
-function setCurrentMode(newMode){
-    currentMode = newMode;
-}
-
 
 //make a function to clear the grid(basically resets the game)
-function resetGrid(){
-    grid.innerHTML = '';
-    createGrid(size);
+function resetGrid() {
+  grid.innerHTML = "";
+  createGrid(currentSize);
 }
+
+function setCurrentMode(newMode) {
+  if (newMode === "rgb") {
+    rgbBtn.classList.add("active");
+  } else if (newMode == "black") {
+    blackBtn.classList.add("active");
+  } else if (newMode === "eraser") {
+    eraserBtn.classList.add("active");
+  }
+
+  if (currentMode === "rgb") {
+    rgbBtn.classList.remove("active");
+  } else if (currentMode === "black") {
+    blackBtn.classList.remove("active");
+  } else if (currentMode === "eraser") {
+    eraserBtn.classList.remove("active");
+  }
+  currentMode = newMode;
+}
+
 
 
 function changeColor(e) {
-  if (currentMode === 'black') {
-    e.target.style.backgroundColor = 'black';
-  } else if (currentMode === 'rgb') {
-    const R = Math.floor(Math.random()*256);
-    const G = Math.floor(Math.random()*256);
-    const B = Math.floor(Math.random()*256);
-    e.target.style.backgroundColor = `rgb(${R},${G},${B})`
-  }
-  else if (currentMode === 'eraser'){
+  if (currentMode === "black") {
+    e.target.style.backgroundColor = "black";
+  } else if (currentMode === "rgb") {
+    const R = Math.floor(Math.random() * 256);
+    const G = Math.floor(Math.random() * 256);
+    const B = Math.floor(Math.random() * 256);
+    e.target.style.backgroundColor = `rgb(${R},${G},${B})`;
+  } else if (currentMode === "eraser") {
     e.target.style.backgroundColor = null;
-  }
-  else if(isCustom){
+  } else if (isCustom) {
     e.target.style.backgroundColor = currentColor;
-  } 
-
+  }
 }
 
-
-
-
-window.onload = () =>{
-    createGrid(currentSize);
-    menu();
-}
+window.onload = () => {
+  createGrid(currentSize);
+  menu();
+};

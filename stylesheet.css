@@ -18,7 +18,8 @@ header h1{
 main{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    gap:40px;
+    justify-content: center;
     height: 65vh;
 }
 
@@ -40,8 +41,18 @@ button{
     height: 5vmin;
     font-size: 1em;
     color: rgb(230, 223, 223);
-    background-color: rgb(73, 73, 99);
+    background-color: rgb(86, 86, 117);
+    border-style: none;
+    border-radius: 30px;
 }
+
+.active {
+    background-color: rgb(127, 127, 177);
+    -webkit-box-shadow: inset 0px 0px 5px rgb(61, 61, 80);
+       -moz-box-shadow: inset 0px 0px 5px rgb(61, 61, 80);
+            box-shadow: inset 0px 0px 5px rgb(61, 61, 80);
+     outline: none;
+  }
 
 #menu{
     displaY: flex;
@@ -61,6 +72,26 @@ button{
     height: 400px;
     background-color: rgb(218, 214, 214);
     box-shadow: 0 0 10px;
+}
+
+
+#slider{
+    appearance: none;
+    background: rgb(0, 0, 0);  
+    height: 5px;
+    width: 100%;
+    outline: none;
+    border-radius: 20px;
+}
+
+
+#slider::-webkit-slider-thumb{
+    appearance: none;
+    background: rgb(86, 86, 117);
+    width:20px;
+    height:20px;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
 
